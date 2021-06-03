@@ -6,3 +6,5 @@ processors by improving the shortcomings of existing BLAS libraries, such as pac
 # Software dependences
 - [GNU Compiler (GCC)](https://gcc.gnu.org/) (>=v8.2)
 - [OpenMP](https://www.openmp.org/)
+
+# hardware platform
