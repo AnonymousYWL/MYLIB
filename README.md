@@ -11,9 +11,11 @@ processors by improving the shortcomings of existing BLAS libraries, such as pac
 Phytium 2000+, Kunpeng 920, ThunderX2 or otther ARMv8-based processors
 
 # Compile and install
-$ cd NN_LIB && make
-
-$ make install PREFIX= the installation path
-
+$ cd NN_LIB && make  
+$ make install PREFIX= the installation path  
 These commands will copy LibShalom library and headers in the installation path PREFIX.
 
+# API
+LibShalom_sgemm(int transa, int transb, float *C, float *A, float *B, long M, long N, long K);  
+LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long M, long N, long K);  
+LibShalom_set_thread_nums(int num)  
