@@ -4,3 +4,4 @@ LibShalom is a Library for Small Irregular-shaped Matrix Multiplications on ARMv
 processors by improving the shortcomings of existing BLAS libraries, such as packing accounts for a large portion of the runtime, inefficient edge case processing and unreasonable parallelization methods.
 
 # Software dependences
+- [GNU Compiler (GCC)](https://gcc.gnu.org/) (>=v8.2)
