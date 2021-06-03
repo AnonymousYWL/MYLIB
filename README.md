@@ -8,3 +8,4 @@ processors by improving the shortcomings of existing BLAS libraries, such as pac
 - [OpenMP](https://www.openmp.org/)
 
 # hardware platform
+Phytium 2000+, Kunpeng 920, ThunderX2 or otther ARMv8-based processors
