@@ -12,8 +12,6 @@ Phytium 2000+, Kunpeng 920, ThunderX2 or otther ARMv8-based processors
 
 # Compile and install
 $ cd NN_LIB && make 
-
 $ make install PREFIX= the installation path
-
 These commands will copy BLASFEO library and headers in the installation path PREFIX.
 
