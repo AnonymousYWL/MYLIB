@@ -16,8 +16,8 @@ $ make install PREFIX= the installation path
 These commands will copy LibShalom library and headers in the installation path PREFIX.
 
 # API
-**LibShalom_sgemm(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)** // Interface of small GEMM  
-**LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)**  // Interface of irregular-shaped GEMM  
+**LibShalom_sgemm(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)**   // Interface of small GEMM  
+**LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)**   // Interface of irregular-shaped GEMM  
 **LibShalom_set_thread_nums(int num)**                  // Set the total number of threads
 
 # Running Examples
