@@ -22,7 +22,7 @@ __LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long 
 
 # Running Examples
 The command  
-$ cd SGEMM && make  
+$ cd benchmark/SGEMM && make  
 will compile the benchmark program of fp32 small GEMM to generate the executable file main. By executing main, the user can get the evaluation result of the matrices of sizes from 8x8x8 to 128x128x128.
 
 # Note
