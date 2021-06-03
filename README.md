@@ -19,3 +19,12 @@ These commands will copy LibShalom library and headers in the installation path 
 LibShalom_sgemm(int transa, int transb, float *C, float *A, float *B, long M, long N, long K); // Interface of small GEMM
 LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long M, long N, long K);  // Interface of irregular-shaped GEMM
 LibShalom_set_thread_nums(int num)                  // Set the total number of threads
+
+# Running Examples
+The command  
+$ cd SGEMM && make  
+will compile the benchmark program of fp32 small GEMM to generate the executable file main. By executing main, the user can get the evaluation result of the matrices of sizes from 8x8x8 to 128x128x128.
+
+# Note
+The matrices are stored in the row-major format in this library.
+We will keep this library updated and maintained.
