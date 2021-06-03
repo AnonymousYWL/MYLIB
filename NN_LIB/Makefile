@@ -24,7 +24,7 @@ ifeq ($(TARGET), KP920)
 	g++ -c -fPIC -fopenmp -D XXX SMM_NT_thread.c -o SMM_NT_thread.o 
 else
 	g++ -c -fPIC -fopenmp -D XXX SMM_NT_thread.c -o SMM_NT_thread.o
-endif
+endif 
 DGEMM_NN.o:DGEMM_NN.c
 	g++ -c -fPIC DGEMM_NN.c -o DGEMM_NN.o
 
