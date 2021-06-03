@@ -49,7 +49,7 @@ void random_matrix1( int m, int n, float *a)
 
 */
 
-void SMM_L1(float *C, float *A, float *B, long M, long N, 
+void SGEMM_NN_L1(float *C, float *A, float *B, long M, long N, 
 	long K)
 {
 	asm volatile(

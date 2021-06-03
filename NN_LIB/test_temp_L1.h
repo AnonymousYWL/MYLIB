@@ -2,8 +2,28 @@
 #define __TEST_H__ 
 
 #include<stdio.h>
-void NN_SMM(float *C, float *A, float *B, long M, long N, long K);
-void SMM_L1(float *C, float *A, float *B, long M, long N, long K);
-void SMM(float *C, float *A, float *B, long M, long N, long K, float *SB);
+#include <vector>
 
+using namespace std;
+
+#define NoTrans 0
+#define Trans 1
+
+extern vector<int>vec;
+extern int Tm, Tn, T;
+
+void LibShalom_sgemm(int transa, int transb, float *C, float *A, float *B, long M, long N, long K);
+void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB);
+void SGEMM_NN_L1(float *C, float *A, float *B, long M, long N, long K);
+void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB);
+
+void LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long M, long N, long K);
+void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N, long K);
+
+void DGEMM_NN(double *C, double *A, double *B, long M, long N, long K);
+void LibShalom_dgemm(int transa, int transb, double *C, double *A, double *B, long M, long N, long K);
+
+void LibShalom_set_thread_nums(int num);
+
+void LibShalom_set_thread_ways(int tm, int tn);
 #endif

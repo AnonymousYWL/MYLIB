@@ -2,17 +2,39 @@
 #include "test_temp_L1.h"
 #include <stdlib.h>
 
-void NN_SMM(float *C, float *A, float *B, long M, long N, long K)
+void LibShalom_sgemm(int transa,int transb, float *C, float *A, 
+				float *B, long M, long N, long K)
 {
-
-	if(N > 96)
+	if(/*(transa == 0) && */(transb == 0))
 	{
-		float *SB= ( float * ) malloc( K* 16 * sizeof( float ) );
-		SMM(C, A, B, M, N, K, SB);
-		free(SB);
+		if(N > 96)
+		{
+			float *SB= ( float * ) malloc( K* 16 * sizeof( float ) );
+			SGEMM_NN(C, A, B, M, N, K, SB);
+			free(SB);
+		}
+		else
+		{
+			SGEMM_NN_L1(C, A, B, M, N, K);
+		}
 	}
+
 	else
 	{
-		SMM_L1(C, A, B, M, N, K);
+			float *SB= ( float * ) malloc( K* 16 * sizeof( float ) );
+			SGEMM_NT(C, A, B, M, N, K, SB);
+			free(SB);
+	}
+
+}
+
+
+void LibShalom_dgemm(int transa,int transb, double *C, double *A, 
+				double *B, long M, long N, long K)
+{
+	if(/*(transa == 0) && */(transb == 0))
+	{
+		DGEMM_NN(C, A, B, M, N, K);
+
 	}
 }
