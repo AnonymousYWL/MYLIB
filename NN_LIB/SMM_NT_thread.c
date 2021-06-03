@@ -3188,7 +3188,7 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
 
     Tm = T / Tn;
 
-    Tn =64;
+    Tn =T;
     Tm=1;
 
     #ifdef XXX
@@ -3209,7 +3209,43 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
     	long m_to = iis + mb;
     	long n_to = jjs + nb;
     	long k_to = K;
+    	
+		for( jj = jjs; jj < n_to; jj= jj + nc)
+		{
+			nc = GEMM_N;
+    		if(n_to - jj < GEMM_N)
+    		{
+    			nc = n_to - jj;
+    		}
 
+    		for( ii = iis ; ii < m_to; ii = ii + mc)
+			{
+				mc = GEMM_M;
+				if(m_to - ii < GEMM_M)
+				{
+					mc = m_to - ii;
+				}
+    			float *CC = C + ii * N + jj;
+
+	    		for(kk= kks; kk < k_to; kk = kk + kc)
+	    		{
+	    			kc = GEMM_K;
+	    			if(k_to - kk < GEMM_K)
+						kc = k_to - kk;
+
+					float *AA = A + ii * K + kk;
+					float *BB = B + jj * K + kk ;
+
+				 	SGEMM_NT_KERNEL_MP(CC, AA, BB, mc, nc, 
+				 		kc, N, K, &SSB[id * GEMM_K * 16], kk);
+	    		}
+    		}
+		}
+
+	
+	}
+
+/*
     	for( ii = iis ; ii < m_to; ii = ii + mc)
     	{
     		mc = GEMM_M;
@@ -3243,8 +3279,9 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
     		}
 
     	}
-    }
 
+    }
+*/
     free(SSB);
 
 }
