@@ -15,5 +15,5 @@ $ cd NN_LIB && make
 
 $ make install PREFIX= the installation path
 
-These commands will copy BLASFEO library and headers in the installation path PREFIX.
+These commands will copy LibShalom library and headers in the installation path PREFIX.
 
