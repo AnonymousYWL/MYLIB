@@ -489,7 +489,7 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 		"	fmla	v26.4s, v10.4s, v2.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[0]			 \n"
 
-		"	ldr		q5, [x11], #16					 \n"  //预取
+		"	ldr		q5, [x11], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[0]			 \n"
 		"	fmla	v29.4s, v11.4s, v3.s[0]			 \n"
@@ -578,7 +578,7 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 		"	fmla	v26.4s, v10.4s, v2.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[2]			 \n"
 
-		"	ldr		q7, [x13], #16					 \n"  //预取
+		"	ldr		q7, [x13], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[2]			 \n"
 		"	fmla	v29.4s, v11.4s, v3.s[2]			 \n"
@@ -669,7 +669,7 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 		"	fmla	v26.4s, v10.4s, v7.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v7.s[0]			 \n"
 
-		"	ldr		q2, [x13], #16					 \n"  //预取
+		"	ldr		q2, [x13], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v0.s[0]			 \n"
 		"	fmla	v29.4s, v11.4s, v0.s[0]			 \n"
@@ -761,7 +761,7 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 		"	fmla	v26.4s, v10.4s, v7.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v7.s[2]			 \n"
 
-		"	ldr		q4, [x15], #16					 \n"  //预取
+		"	ldr		q4, [x15], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v0.s[2]			 \n"
 		"	fmla	v29.4s, v11.4s, v0.s[2]			 \n"
@@ -937,7 +937,7 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 		"	fmla	v26.4s, v10.4s, v2.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[0]			 \n"
 
-//		"	ldr		q5, [x11], #16					 \n"  //预取
+//		"	ldr		q5, [x11], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[0]			 \n"
 		"	ldr		q10, [x24], #16					 \n"
@@ -1015,7 +1015,7 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 		"	fmla	v26.4s, v10.4s, v2.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[2]			 \n"
 
-//		"	ldr		q7, [x13], #16					 \n"  //预取
+//		"	ldr		q7, [x13], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[2]			 \n"
 		"	ldr		q10, [x24], #16					 \n"
