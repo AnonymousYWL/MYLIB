@@ -80,10 +80,10 @@ int main()
 		LibShalom_sgemm(NoTrans, Trans, C, A, B, M, N, K);
 
 
-    free(A);
-    free(B);
-    free(C);
-    return 0;
+	free(A);
+	free(B);
+	free(C);
+	return 0;
 }
 ```
 
