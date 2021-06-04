@@ -86,7 +86,26 @@ int main()
 	return 0;
 }
 ```
+The makefile corresponding to this program:
+```bash
+BLIS_PREFIX = $ path to 
+BLIS_INC    = $(BLIS_PREFIX)/SMM/include
+BLIS_LIB    = $(BLIS_PREFIX)/SMM/lib/libsmm.a 
 
+OTHER_LIBS  =-fopenmp
+
+CC          = g++
+CFLAGS      = -O3 -I$(BLIS_INC)
+LINKER      = $(CC)
+
+OBJS        = Hello.o
+
+%.o: %.c
+	 $(CC) $(CFLAGS) -c -fopenmp $< -o $@
+
+all: $(OBJS)
+	$(LINKER) $(OBJS) $(BLIS_LIB) $(OTHER_LIBS) -o a.out
+```
 # Note
 The matrices are stored in the row-major format in this library.
 We will keep this library updated and maintained.
