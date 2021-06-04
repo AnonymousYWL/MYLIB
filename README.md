@@ -9,6 +9,7 @@ processors by improving the shortcomings of existing BLAS libraries, such as pac
 
 # hardware platform
 Phytium 2000+, Kunpeng 920, ThunderX2 or otther ARMv8-based processors
+![image](https://github.com/AnonymousYWL/MYLIB/blob/main/platforms.png)
 
 # Compile and install
 ```bash
