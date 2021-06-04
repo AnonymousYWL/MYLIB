@@ -14,8 +14,11 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 		".macro PACK_KERNEL5x4_BEGIN_K             	 \n"
 		"										 	 \n"
 
+		/* Load A from  memory/cache to vector register */
 		"	ldr		q0, [x11], #16					 \n"
 		"	ldr		q1, [x12], #16				     \n"
+
+		/* Load B from  memory/cache to vector register */
 		"	ldr		q5, [x16], #16					 \n"
 
 		"   prfm    PLDL1KEEP, [x11, #64]       	 \n"
@@ -43,6 +46,7 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 
 		"	ldr		q8, [x19], #16					 \n"
 		"	ldr		q9, [x11], #16					 \n"
+		/* Overlapping computation and packing */
 		"	st4		{v5.s, v6.s, v7.s, v8.s}[0], [x24]		\n"
 		"	add		x24, x24, x8, lsl #2			 \n"
 
@@ -3175,6 +3179,7 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
     posix_memalign(&ptr, 64, T * GEMM_K * 16  *sizeof( float ));
     float *SSB = (float *)ptr;
 
+    // Determines the number of threads to parallelize the N-dimension
     Tn= ceil(sqrt(T * N / M));
 
     for(i =0 ; i < vec.size(); i++)
@@ -3186,6 +3191,7 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
     	}
     }
 
+// Determines the number of threads to parallelize the M-dimension
     Tm = T / Tn;
 
     Tn =T;
@@ -3195,6 +3201,7 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
     	printf("KP920\n");
     #endif
 
+   
     #pragma omp parallel num_threads(T) 
     {
     	long ii, jj, kk;
@@ -3210,6 +3217,7 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
     	long n_to = jjs + nb;
     	long k_to = K;
     	
+    	// Parallelizing M and N dimensions
 		for( jj = jjs; jj < n_to; jj= jj + nc)
 		{
 			nc = GEMM_N;
@@ -3236,6 +3244,7 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
 					float *AA = A + ii * K + kk;
 					float *BB = B + jj * K + kk ;
 
+					// the kernels of irregular-shaped GEMM
 				 	SGEMM_NT_KERNEL_MP(CC, AA, BB, mc, nc, 
 				 		kc, N, K, &SSB[id * GEMM_K * 16], kk);
 	    		}
@@ -3245,43 +3254,6 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
 	
 	}
 
-/*
-    	for( ii = iis ; ii < m_to; ii = ii + mc)
-    	{
-    		mc = GEMM_M;
-    		if(m_to - ii < GEMM_M)
-    		{
-    			mc = m_to - ii;
-    		}
-
-    		for( jj = jjs; jj < n_to; jj= jj + nc)
-    		{
-    			nc = GEMM_N;
-	    		if(n_to - jj < GEMM_N)
-	    		{
-	    			nc = n_to - jj;
-	    		}
-
-	    		float *CC = C + ii * N + jj;
-
-	    		for(kk= kks; kk < k_to; kk = kk + kc)
-	    		{
-	    			kc = GEMM_K;
-	    			if(k_to - kk < GEMM_K)
-						kc = k_to - kk;
-
-					float *AA = A + ii * K + kk;
-					float *BB = B + jj * K + kk ;
-
-				 	SGEMM_NT_KERNEL_MP(CC, AA, BB, mc, nc, 
-				 		kc, N, K, &SSB[id * GEMM_K * 16], kk);
-	    		}
-    		}
-
-    	}
-
-    }
-*/
     free(SSB);
 
 }
