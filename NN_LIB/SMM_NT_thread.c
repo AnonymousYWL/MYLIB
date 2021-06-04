@@ -92,6 +92,7 @@ void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K,
 
 		"	ldr		q6, [x17], #16					 \n"
 
+		/*  scalar-vector  FMA 						 */
 		"	fmla	v12.4s, v0.4s, v5.4s			 \n"
 		"	fmla	v13.4s, v1.4s, v5.4s			 \n"
 

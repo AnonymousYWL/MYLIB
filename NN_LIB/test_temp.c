@@ -86,6 +86,9 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"   prfm    PLDL1KEEP, [x11, #64]       	 \n"
 
 		"	stp		q8, q9, [x24], #32				 \n"
+
+		/* scalar-vector  FMA 						 */
+
 		"	fmla	v12.4s, v8.4s, v0.s[0]			 \n"
 		"	fmla	v13.4s, v9.4s, v0.s[0]			 \n"
 
@@ -116,7 +119,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[0]			 \n"
 
-		"	ldr		q5, [x11], #16					 \n"  //预取
+		"	ldr		q5, [x11], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[0]			 \n"
 		"	fmla	v29.4s, v11.4s, v3.s[0]			 \n"
@@ -219,7 +222,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[2]			 \n"
 
-		"	ldr		q7, [x13], #16					 \n"  //预取
+		"	ldr		q7, [x13], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[2]			 \n"
 		"	fmla	v29.4s, v11.4s, v3.s[2]			 \n"
@@ -322,7 +325,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v7.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v7.s[0]			 \n"
 
-		"	ldr		q2, [x13], #16					 \n"  //预取
+		"	ldr		q2, [x13], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v0.s[0]			 \n"
 		"	fmla	v29.4s, v11.4s, v0.s[0]			 \n"
@@ -426,7 +429,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v7.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v7.s[2]			 \n"
 
-		"	ldr		q4, [x15], #16					 \n"  //预取
+		"	ldr		q4, [x15], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v0.s[2]			 \n"
 		"	fmla	v29.4s, v11.4s, v0.s[2]			 \n"
@@ -710,7 +713,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[0]			 \n"
 
-		"	ldr		q5, [x11], #16					 \n"  //预取
+		"	ldr		q5, [x11], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[0]			 \n"
 		"	fmla	v29.4s, v11.4s, v3.s[0]			 \n"
@@ -799,7 +802,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[2]			 \n"
 
-		"	ldr		q7, [x13], #16					 \n"  //预取
+		"	ldr		q7, [x13], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[2]			 \n"
 		"	fmla	v29.4s, v11.4s, v3.s[2]			 \n"
@@ -890,7 +893,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v7.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v7.s[0]			 \n"
 
-		"	ldr		q2, [x13], #16					 \n"  //预取
+		"	ldr		q2, [x13], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v0.s[0]			 \n"
 		"	fmla	v29.4s, v11.4s, v0.s[0]			 \n"
@@ -982,7 +985,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v7.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v7.s[2]			 \n"
 
-		"	ldr		q4, [x15], #16					 \n"  //预取
+		"	ldr		q4, [x15], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v0.s[2]			 \n"
 		"	fmla	v29.4s, v11.4s, v0.s[2]			 \n"
@@ -1158,7 +1161,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[0]			 \n"
 
-//		"	ldr		q5, [x11], #16					 \n"  //预取
+//		"	ldr		q5, [x11], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[0]			 \n"
 		"	ldr		q10, [x24], #16					 \n"
@@ -1236,7 +1239,7 @@ void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[2]			 \n"
 
-//		"	ldr		q7, [x13], #16					 \n"  //预取
+//		"	ldr		q7, [x13], #16					 \n"  // 
 
 		"	fmla	v28.4s, v10.4s, v3.s[2]			 \n"
 		"	ldr		q10, [x24], #16					 \n"

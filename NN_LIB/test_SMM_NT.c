@@ -81,13 +81,14 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		".endm									 	 \n"
 
 
-
+		/* loop unroll factor is 8*/
 		".macro PACK_KERNEL5x4_K0                    \n"
 
 		"	prfm 	PLDL1KEEP, [x16, #64]			 \n"
 
 		"	ldr		q6, [x17], #16					 \n"
 
+		/*   vector-vector 	 FMA 					 */
 		"	fmla	v12.4s, v0.4s, v5.4s			 \n"
 		"	fmla	v13.4s, v1.4s, v5.4s			 \n"
 
@@ -410,7 +411,7 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[0]			 \n"
 
-		"	ldr		q5, [x11], #16					 \n"  //预取
+		"	ldr		q5, [x11], #16					 \n"  
 
 		"	fmla	v28.4s, v10.4s, v3.s[0]			 \n"
 		"	fmla	v29.4s, v11.4s, v3.s[0]			 \n"
@@ -499,7 +500,7 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[2]			 \n"
 
-		"	ldr		q7, [x13], #16					 \n"  //预取
+		"	ldr		q7, [x13], #16					 \n"  
 
 		"	fmla	v28.4s, v10.4s, v3.s[2]			 \n"
 		"	fmla	v29.4s, v11.4s, v3.s[2]			 \n"
@@ -590,7 +591,7 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v7.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v7.s[0]			 \n"
 
-		"	ldr		q2, [x13], #16					 \n"  //预取
+		"	ldr		q2, [x13], #16					 \n"  
 
 		"	fmla	v28.4s, v10.4s, v0.s[0]			 \n"
 		"	fmla	v29.4s, v11.4s, v0.s[0]			 \n"
@@ -682,7 +683,7 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v7.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v7.s[2]			 \n"
 
-		"	ldr		q4, [x15], #16					 \n"  //预取
+		"	ldr		q4, [x15], #16					 \n"  
 
 		"	fmla	v28.4s, v10.4s, v0.s[2]			 \n"
 		"	fmla	v29.4s, v11.4s, v0.s[2]			 \n"
@@ -858,7 +859,7 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[0]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[0]			 \n"
 
-//		"	ldr		q5, [x11], #16					 \n"  //预取
+//		"	ldr		q5, [x11], #16					 \n"  
 
 		"	fmla	v28.4s, v10.4s, v3.s[0]			 \n"
 		"	ldr		q10, [x24], #16					 \n"
@@ -936,7 +937,7 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		"	fmla	v26.4s, v10.4s, v2.s[2]			 \n"
 		"	fmla	v27.4s, v11.4s, v2.s[2]			 \n"
 
-//		"	ldr		q7, [x13], #16					 \n"  //预取
+//		"	ldr		q7, [x13], #16					 \n" 
 
 		"	fmla	v28.4s, v10.4s, v3.s[2]			 \n"
 		"	ldr		q10, [x24], #16					 \n"
