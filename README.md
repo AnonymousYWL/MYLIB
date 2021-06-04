@@ -26,8 +26,9 @@ All LibShalom definitions and prototypes may be included in your C source file b
 ```
 
 # API
-```LibShalom_sgemm(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)```   // Interface of small GEMM  
-```LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)```   // Interface of irregular-shaped GEMM  
+```LibShalom_sgemm(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)```   // Interface of small SGEMM  
+```LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)```   // Interface of irregular-shaped SGEMM  
+```LibShalom_dgemm(int transa, int transb, double *C, double *A, double *B, long M, long N, long K)```   // Interface of small DGEMM 
 ```LibShalom_set_thread_nums(int num)```                  // Set the total number of threads
 
 # Running Examples
