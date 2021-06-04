@@ -18,7 +18,7 @@ $ make install PREFIX= the installation path
 These commands will copy LibShalom library and headers in the installation path PREFIX.
 
 # Compiling with LibShalom
-All LibShalom definitions and prototypes may be included in your C source file by including a single header file, LibShalom.h:
+All LibShalom definitions and prototypes may be included in your C source file by including a single header file, ```LibShalom.h```:
 ```C
 #include <stdio.h>
 #include <stdlib.h>
