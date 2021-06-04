@@ -4,7 +4,7 @@
 
 #include <cblas.h>
 
-#include "test_temp_L1.h"
+#include "LibShalom.h"
 
 
 static double gtod_ref_time_sec = 0.0;

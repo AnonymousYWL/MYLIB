@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <omp.h>
 #include<math.h>
-#include "test_temp_L1.h"
+#include "LibShalom.h"
 
 int Tm, Tn, T;
 

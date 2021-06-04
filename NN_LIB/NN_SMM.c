@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "test_temp_L1.h"
+#include "LibShalom.h"
 #include <stdlib.h>
 
 void LibShalom_sgemm(int transa,int transb, float *C, float *A, 

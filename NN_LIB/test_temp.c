@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "test_temp_L1.h"
+#include "LibShalom.h"
 
 
 void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)

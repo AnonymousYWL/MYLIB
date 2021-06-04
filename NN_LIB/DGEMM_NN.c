@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include <stdlib.h>
-#include "test_temp_L1.h"
+#include "LibShalom.h"
 
 void DGEMM_NN(double *C, double *A, double *B, long M, long N, 
 				long K)
