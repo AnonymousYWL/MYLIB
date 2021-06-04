@@ -11,7 +11,7 @@ processors by improving the shortcomings of existing BLAS libraries, such as pac
 Phytium 2000+, Kunpeng 920, ThunderX2 or otther ARMv8-based processors
 
 # Compile and install
-```
+```bash
 $ cd NN_LIB && make  
 $ make install PREFIX= the installation path
 ```
