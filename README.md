@@ -88,14 +88,14 @@ int main()
 ```
 The makefile corresponding to this program:
 ```bash
-BLIS_PREFIX = $ path to 
-BLIS_INC    = $(BLIS_PREFIX)/SMM/include
-BLIS_LIB    = $(BLIS_PREFIX)/SMM/lib/libsmm.a 
+LibShalom_PREFIX = $ path to install LibShalom 
+LibShalom_INC    = $(LibShalom_PREFIX)/SMM/include
+LibShalom_LIB    = $(LibShalom_PREFIX)/SMM/lib/libsmm.a 
 
 OTHER_LIBS  =-fopenmp
 
 CC          = g++
-CFLAGS      = -O3 -I$(BLIS_INC)
+CFLAGS      = -O3 -I$(LibShalom_INC)
 LINKER      = $(CC)
 
 OBJS        = Hello.o
@@ -104,7 +104,7 @@ OBJS        = Hello.o
 	 $(CC) $(CFLAGS) -c -fopenmp $< -o $@
 
 all: $(OBJS)
-	$(LINKER) $(OBJS) $(BLIS_LIB) $(OTHER_LIBS) -o a.out
+	$(LINKER) $(OBJS) $(LibShalom_LIB) $(OTHER_LIBS) -o a.out
 ```
 # Note
 The matrices are stored in the row-major format in this library.
