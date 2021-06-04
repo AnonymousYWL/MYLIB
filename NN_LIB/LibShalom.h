@@ -6,9 +6,12 @@
 
 using namespace std;
 
+// No transpose
 #define NoTrans 0
+// transpose
 #define Trans 1
 
+//All divisors of the total number of threads
 extern vector<int>vec;
 extern int Tm, Tn, T;
 
