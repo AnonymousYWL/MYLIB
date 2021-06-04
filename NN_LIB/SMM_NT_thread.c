@@ -6,7 +6,6 @@
 
 int Tm, Tn, T;
 
-
 void SGEMM_NT_KERNEL_MP(float *C, float *A, float *B, long	M, long N, long K, 
 			long LN, long LK, float *SB, long k_tag)
 {
@@ -3235,6 +3234,8 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
 				}
     			float *CC = C + ii * N + jj;
 
+				/*the kcxnc panel of B reside in L3 cache or memory*/
+    			/*the mcxkc block of A reside in L1 cache*/
 	    		for(kk= kks; kk < k_to; kk = kk + kc)
 	    		{
 	    			kc = GEMM_K;
