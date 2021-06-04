@@ -34,7 +34,7 @@ All LibShalom definitions and prototypes may be included in your C source file b
 # Running Benchmark
 The command
 ```bash
-$ cd benchmark/SGEMM && make  
+$ cd benchmark/small_SGEMM && make  
 ```
 will compile the benchmark program of fp32 small GEMM to generate the executable file ```main```. By executing ```main```, the user can get the evaluation result of the matrices of sizes from 8x8x8 to 128x128x128.
 
