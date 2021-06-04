@@ -31,12 +31,61 @@ All LibShalom definitions and prototypes may be included in your C source file b
 ```LibShalom_dgemm(int transa, int transb, double *C, double *A, double *B, long M, long N, long K)```   // Interface of small DGEMM  
 ```LibShalom_set_thread_nums(int num)```                  // Set the total number of threads
 
-# Running Examples
+# Running Benchmark
 The command
 ```bash
 $ cd benchmark/SGEMM && make  
 ```
 will compile the benchmark program of fp32 small GEMM to generate the executable file ```main```. By executing ```main```, the user can get the evaluation result of the matrices of sizes from 8x8x8 to 128x128x128.
+
+# Getting Started
+the following C code is focused on a specific functionality but may be considered as Hello LibShalom.
+```C
+#include <stdlib.h>
+#include <stdlib.h>
+#include "LibShalom.h"
+
+int main()
+{
+
+	int i,j,k;
+	int loop= 100;
+	long M, N, K;
+    M= N = K = 80;
+    /* row-major */   	
+	float *A = ( float * ) malloc( K* M * sizeof( float ) );
+	float *B = ( float * ) malloc( K* N * sizeof( float ) );
+	float *C = ( float * ) malloc( M* N * sizeof( float ) );
+
+	double drand48();
+	/* initialize input matrix and B*/
+	for ( i = 0; i < M; i++ )
+	{
+		for ( j = 0; j < K; j++ )
+			A [i* K + j]= 2.0 * (float)drand48( ) - 1.0 ;
+	}
+
+	for ( i = 0; i < K; i++ )
+	{
+		for ( j = 0; j < N; j++ )
+			B [i * K + j]= 2.0 * (float)drand48( ) - 1.0 ;
+	}
+
+	// warm up
+	//perform C = A * B (B is transposed)
+	for( i =0 ;i< 5; i++)
+		LibShalom_sgemm(NoTrans, Trans, C, A, B, M, N, K);
+
+	for( i= 0; i< loop ;i++)
+		LibShalom_sgemm(NoTrans, Trans, C, A, B, M, N, K);
+
+
+    free(A);
+    free(B);
+    free(C);
+    return 0;
+}
+```
 
 # Note
 The matrices are stored in the row-major format in this library.
