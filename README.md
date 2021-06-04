@@ -58,7 +58,7 @@ int main()
 	float *C = ( float * ) malloc( M* N * sizeof( float ) );
 
 	double drand48();
-	/* initialize input matrix and B*/
+	/* initialize input matrices A and B*/
 	for ( i = 0; i < M; i++ )
 	{
 		for ( j = 0; j < K; j++ )
