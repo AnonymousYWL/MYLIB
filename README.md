@@ -51,8 +51,8 @@ int main()
 	int i,j,k;
 	int loop= 100;
 	long M, N, K;
-    M= N = K = 80;
-    /* row-major */   	
+        M= N = K = 80;
+        /* row-major */   	
 	float *A = ( float * ) malloc( K* M * sizeof( float ) );
 	float *B = ( float * ) malloc( K* N * sizeof( float ) );
 	float *C = ( float * ) malloc( M* N * sizeof( float ) );
