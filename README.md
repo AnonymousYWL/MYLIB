@@ -17,6 +17,14 @@ $ make install PREFIX= the installation path
 ```
 These commands will copy LibShalom library and headers in the installation path PREFIX.
 
+# Compiling with LibShalom
+All LibShalom definitions and prototypes may be included in your C source file by including a single header file, LibShalom.h:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include "LibShalom.h"
+```
+
 # API
 ```LibShalom_sgemm(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)```   // Interface of small GEMM  
 ```LibShalom_sgemm_mp(int transa, int transb, float *C, float *A, float *B, long M, long N, long K)```   // Interface of irregular-shaped GEMM  
