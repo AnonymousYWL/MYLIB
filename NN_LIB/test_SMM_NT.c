@@ -12,9 +12,10 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 		/* Load A from  memory/cache to vector register */
 		"	ldr		q0, [x11], #16					 \n"
 		"	ldr		q1, [x12], #16				     \n"
-		"	ldr		q5, [x16], #16					 \n"
 
 		/* Load B from  memory/cache to vector register */
+		"	ldr		q5, [x16], #16					 \n"
+
 		"   prfm    PLDL1KEEP, [x11, #64]       	 \n"
 		"	prfm	PLDL1KEEP, [x12, #64] 			 \n"
 		"   prfm    PLDL1KEEP, [x13, #64]       	 \n"

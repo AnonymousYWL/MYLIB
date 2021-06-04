@@ -2,14 +2,18 @@
 #include "LibShalom.h"
 
 
+/* kernels of NN small SGEMM*/
 void SGEMM_NN(float *C, float *A, float *B, long M, long N, long K, float *SB)
 {
 	asm volatile(
 		".macro PACK_KERNEL5x16_BEGIN_K             \n"
 		"										 	 \n"
 
+		/* Load A from  memory/cache to vector register */
 		"	ldr		q0, [x11], #16					 \n"
 		"	ldr		q1, [x12], #16					 \n"
+
+		/* Load B from  memory/cache to vector register */
 		"	ldp		q8, q9, [x17], #32			     \n"
 
 		"   prfm    PLDL1KEEP, [x11, #64]       	 \n"
