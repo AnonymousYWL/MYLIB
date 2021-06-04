@@ -31,9 +31,11 @@ All LibShalom definitions and prototypes may be included in your C source file b
 ```LibShalom_set_thread_nums(int num)```                  // Set the total number of threads
 
 # Running Examples
-The command  
+The command
+```bash
 $ cd benchmark/SGEMM && make  
-will compile the benchmark program of fp32 small GEMM to generate the executable file main. By executing main, the user can get the evaluation result of the matrices of sizes from 8x8x8 to 128x128x128.
+```
+will compile the benchmark program of fp32 small GEMM to generate the executable file ```main```. By executing ```main```, the user can get the evaluation result of the matrices of sizes from 8x8x8 to 128x128x128.
 
 # Note
 The matrices are stored in the row-major format in this library.
