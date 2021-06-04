@@ -2,16 +2,19 @@
 #include "LibShalom.h"
 
 
+/* kernels of NT small SGEMM*/
 void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 {
 	asm volatile(
 		".macro PACK_KERNEL5x4_BEGIN_K             	 \n"
 		"										 	 \n"
 
+		/* Load A from  memory/cache to vector register */
 		"	ldr		q0, [x11], #16					 \n"
 		"	ldr		q1, [x12], #16				     \n"
 		"	ldr		q5, [x16], #16					 \n"
 
+		/* Load B from  memory/cache to vector register */
 		"   prfm    PLDL1KEEP, [x11, #64]       	 \n"
 		"	prfm	PLDL1KEEP, [x12, #64] 			 \n"
 		"   prfm    PLDL1KEEP, [x13, #64]       	 \n"
@@ -37,6 +40,7 @@ void SGEMM_NT(float *C, float *A, float *B, long M, long N, long K, float *SB)
 
 		"	ldr		q8, [x19], #16					 \n"
 		"	ldr		q9, [x11], #16					 \n"
+		/* Overlapping computation and packing */
 		"	st4		{v5.s, v6.s, v7.s, v8.s}[0], [x24]		\n"
 		"	add		x24, x24, x8, lsl #2			 \n"
 
