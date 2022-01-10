@@ -6429,7 +6429,7 @@ void SGEMM_NT_mp(float *C, float *A, float *B, long M, long N,
 						kc = k_to - kk;
 
 					float *AA = A + ii * K + kk;
-					float *BB = B + jj * K + kk ;
+					float *BB = B + jj * K + kk;
 
 					//Handling cases with N = 1
 				 	if((nc % 2 == 1) && (nc >= 17))
